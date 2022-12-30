@@ -15,8 +15,14 @@ import dash_bootstrap_components as dbc
 # LAYOUT
 ########################################################################
 
-sidebar_contents = [
+layout = dbc.Col([
 
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    
     # fatura nubank ----------------------------------------------------
 
     dbc.NavLink(
@@ -24,10 +30,10 @@ sidebar_contents = [
             DashIconify(
                 icon='icon-park-twotone:bill',
                 color= '#9400d3',
-                width= 25
+                width= 20
             ),
             html.Span(
-                "Fatura Nubank",
+                " Fatura Nubank",
                 className = 'sidebar-texto'
             )
         ],
@@ -43,10 +49,10 @@ sidebar_contents = [
             DashIconify(
                 icon='icon-park-twotone:bill',
                 color= '#ff7900',
-                width= 25
+                width= 20
             ),
             html.Span(
-                "Fatura Inter",
+                " Fatura Inter",
                 className = 'sidebar-texto'
             )
         ],
@@ -62,15 +68,16 @@ sidebar_contents = [
             DashIconify(
                 icon='ph:magnifying-glass-duotone',
                 color= '#4d4d4d',
-                width= 25
+                width= 20
             ),
             html.Span(
-                "Detalhamento",
+                " Detalhamento",
                 className = 'sidebar-texto'
             )
         ],
         href = '/detalhamento-categorias',
         active = 'exact',
         id = 'detalhamento'
-    )
-]
+    ),
+
+], id='sidebar-completa')

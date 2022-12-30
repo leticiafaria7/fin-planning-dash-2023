@@ -17,3 +17,32 @@ html {
 body {
     font-family: Ubuntu;
 }
+
+.container-grid-home {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 0.5fr 2fr;
+    grid-template-rows: 0.4fr 2fr;
+    grid-template-areas: 'nav nav' 'sidebar content';
+}
+
+nav {
+    background: #000;
+    grid-area: nav;
+}
+
+.navbar-geral {
+    background-color: #fff;
+    font-family: Ubuntu;
+    font-size: 13px;
+    color: #4d4d4d;
+    z-index: 5000;
+    padding-left: 0px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+}
+
+#sidebar {
+    background: #fff;
+    grid-area: sidebar;
+}
