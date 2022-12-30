@@ -37,12 +37,6 @@ sidebar
     font-size: 13px;
 }
 
-.sidebar-texto:hover {
-    color: #d4d4d4;
-    padding-left: 10px;
-    font-size: 13px;
-}
-
 #fatura-nubank:hover {
     color: #d4d4d4;
     background-color: #b4a7d6;
@@ -106,7 +100,7 @@ navbar
 }
 
 /* --------------------------------------------------------------------------
-dashboard
+dashboard home
 -----------------------------------------------------------------------------*/
 
 #ano-home {
@@ -117,10 +111,10 @@ dashboard
     font-size: 13px;
 }
 
-.cards {
-    color: #4d4d4d;
+.cards-gastos {
+    color: #a61c00;
     font-size: 13px;
-    border: 1px solid #d4d4d4;
+    border: 1px solid #a61c00;
     padding: 10px;
     margin: 10px;
     border-radius: 4px;
@@ -131,3 +125,100 @@ dashboard
     align-items: left;
     text-align: left;
 }
+
+.cards-entradas {
+    color: #274e13;
+    font-size: 13px;
+    border: 1px solid #274e13;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+}
+
+.cards-leftovers {
+    color: #1c4587;
+    font-size: 13px;
+    border: 1px solid #1c4587;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+fatura nubank
+-----------------------------------------------------------------------------*/
+
+.to-home {
+    padding: 7px;
+    font-size: 13px;
+    color: #4d4d4d;
+}
+
+.to-home:hover {
+    padding: 7px;
+    font-size: 13px;
+    color: #4d4d4d;
+    text-decoration: underline;
+}
+
+#ano-nubank {
+    font-size: 13px;
+}
+
+#mes-nubank {
+    font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+fatura inter
+-----------------------------------------------------------------------------*/
+
+#ano-inter {
+    font-size: 13px;
+}
+
+#mes-inter {
+    font-size: 13px;
+}
+
+
+/* --------------------------------------------------------------------------
+detalhamento
+-----------------------------------------------------------------------------*/
+
+#ano-detalhamento {
+    font-size: 13px;
+}
+
+#mes-detalhamento {
+    font-size: 13px;
+}
+
+.titulo-texto {
+    padding-right: 5px;
+}
+
+.titulo-secao {
+    font-size: 18px;
+    color: #4d4d4d;
+    border-bottom: 1px solid #4d4d4d;
+    margin-left: 25px;
+    margin-right: 15px;
+    padding-bottom: 7px;
+    padding-left: 15px;
+    padding-right: 25px;
+    margin-bottom: 15px;
+}
+

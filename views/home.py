@@ -109,7 +109,6 @@ layout = dbc.Col([
     dbc.Row([
 
         dbc.Col([
-
             ## selecionar ano -------------------------------------------------
             dcc.Dropdown(
                 id='ano-home',
@@ -146,15 +145,15 @@ layout = dbc.Col([
             dbc.Row([
                 html.Div("Gastos previstos"),
                 html.Div(id = 'card1')
-            ], className='cards'),
+            ], className='cards-gastos'),
             dbc.Row([
                 html.Div("Entradas previstas"),
                 html.Div(id = 'card2')
-            ], className='cards'),
+            ], className='cards-entradas'),
             dbc.Row([
                 html.Div("Leftovers"),
                 html.Div(id = 'card3')
-            ], className='cards')
+            ], className='cards-leftovers')
         ], width=3)
 
     ]),
