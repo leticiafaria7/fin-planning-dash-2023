@@ -130,14 +130,32 @@ layout = dbc.Col([
         ], width = 4),
 
         dbc.Col([], width = 6)
-        
-        
-
-        
-        
     ]),
 
     dbc.Row([
+        # gráfico ------------------------------------------------
+        dbc.Col([
+            dcc.Graph(
+                id='grafico-cat',
+                config={'displayModeBar': False}
+            )
+        ], width=9),
+
+        # cards ------------------------------------------------
+        dbc.Col([
+            dbc.Row([
+                html.Div("Gastos previstos"),
+                html.Div(id = 'card1')
+            ], className='cards'),
+            dbc.Row([
+                html.Div("Entradas previstas"),
+                html.Div(id = 'card2')
+            ], className='cards'),
+            dbc.Row([
+                html.Div("Leftovers"),
+                html.Div(id = 'card3')
+            ], className='cards')
+        ], width=3)
 
     ]),
 ])

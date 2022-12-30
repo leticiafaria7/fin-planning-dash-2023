@@ -8,6 +8,7 @@ import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
+# import dash_html_components
 
 from app import app
 from views import home, nubank, inter, details, sidebar
@@ -24,11 +25,13 @@ app.layout = dbc.Container(
     children=[
         dbc.Row([
 
+            # sidebar ---------------------------------------------------------------------
             dbc.Col([
                 dcc.Location(id = 'url'),
                 sidebar.layout
             ], md=2, style={'background-color': 'transparent', 'height': '1080px'}),
 
+            # contents da page selecionada -------------------------------------------------
             dbc.Col([
                 content
             ], md=10, style={'background-color': 'transparent', 'height': '1080px'})
