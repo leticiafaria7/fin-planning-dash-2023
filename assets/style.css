@@ -115,7 +115,9 @@ dashboard home
     color: #a61c00;
     font-size: 13px;
     border: 1px solid #a61c00;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 7px;
     margin: 10px;
     border-radius: 4px;
     display: flex;
@@ -130,7 +132,9 @@ dashboard home
     color: #274e13;
     font-size: 13px;
     border: 1px solid #274e13;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 7px;
     margin: 10px;
     border-radius: 4px;
     display: flex;
@@ -145,7 +149,9 @@ dashboard home
     color: #1c4587;
     font-size: 13px;
     border: 1px solid #1c4587;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 7px;
     margin: 10px;
     border-radius: 4px;
     display: flex;
@@ -157,7 +163,7 @@ dashboard home
 }
 
 /* --------------------------------------------------------------------------
-fatura nubank
+botão home
 -----------------------------------------------------------------------------*/
 
 .to-home {
@@ -173,12 +179,20 @@ fatura nubank
     text-decoration: underline;
 }
 
+/* --------------------------------------------------------------------------
+fatura nubank
+-----------------------------------------------------------------------------*/
+
 #ano-nubank {
     font-size: 13px;
 }
 
 #mes-nubank {
     font-size: 13px;
+}
+
+.dropdown-faturas {
+    padding-left: 25px;
 }
 
 /* --------------------------------------------------------------------------
@@ -222,3 +236,12 @@ detalhamento
     margin-bottom: 15px;
 }
 
+#dropdown-details {
+    padding-left: 25px;
+    padding-top: 10px;
+}
+
+#dash-details {
+    padding-left: 25px;
+    padding-top: 10px;
+}

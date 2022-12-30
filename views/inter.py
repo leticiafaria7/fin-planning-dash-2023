@@ -59,7 +59,7 @@ layout = dbc.Col([
                 id = 'home-button'
             ),
         ], width = 2)
-    ]),
+    ], className='dropdown-faturas'),
 
     dbc.Row([
 
