@@ -10,8 +10,8 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
 from app import app
-from views import home, nubank, inter, details
-from callbacks import navbar, sidebar, callbacks_gerais
+from views import home, nubank, inter, details, sidebar
+from callbacks import callbacks_gerais
 
 
 #######################################################################

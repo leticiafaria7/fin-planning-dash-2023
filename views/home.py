@@ -14,15 +14,27 @@ from dash.dependencies import Input, Output
 #######################################################################
 
 layout = dbc.Col([
-    html.Br(),
+
+    html.Br(), # espaço em branco acima do navbar
     
     dbc.Row([
+
+        dbc.Col(width=1),
+
+        # espaço na faixa do navbar ----------------------------------------------
+        dbc.Row([
+            html.Br(),
+        ]),
+
+        # contas bancárias --------------------------------------------------------
         dbc.Col([
             dbc.Row([
                 html.Div([
                     html.Span("Contas bancárias")
                 ], id = 'titulo1', className='titulo-navbar'),
-                html.Hr()
+                html.Hr(
+                    style={'background-color': '#ffffff', 'height': '2px', 'border': 'none'}
+                )
             ]),
             dbc.Row([
                 dbc.Col([
@@ -30,34 +42,41 @@ layout = dbc.Col([
                         html.Div("Inter"),
                         html.Div(id = 'total-inter')
                     ], className='total-inter-nav')
-                ]),
+                ], width=3),
                 dbc.Col([
                     html.Div([
                         html.Div("Nubank"),
                         html.Div(id = 'total-nubank')
                     ], className='total-nubank-nav')
-                ]),
+                ], width=3),
                 dbc.Col([
                     html.Div([
                         html.Div("Banco do Brasil"),
                         html.Div(id = 'total-bb')
                     ], className='total-bb-nav')
-                ]),
+                ], width=4),
                 dbc.Col([
                     html.Div([
                         html.Div("Cash"),
                         html.Div(id = 'total-cash')
                     ], className='total-cash-nav')
-                ]),
+                ], width=2),
             ])
 
-        ], width=8),
+        ], id = 'contas-bancarias'),
+
+        dbc.Col([], width=1),
+
+        # próximas faturas --------------------------------------------------------
+
         dbc.Col([
             dbc.Row([
                 html.Div([
                     html.Span("Próximas faturas")
                 ], id = 'titulo1', className='titulo-navbar'),
-                html.Hr()
+                html.Hr(
+                    style={'background-color': '#ffffff', 'height': '2px', 'border': 'none'}
+                )
             ]),
             dbc.Row([
                 dbc.Col([
@@ -65,18 +84,27 @@ layout = dbc.Col([
                         html.Div("Cartão Inter"),
                         html.Div(id = 'total-cartao-inter')
                     ], className='total-c-inter-nav')
-                ]),
+                ], width=6),
                 dbc.Col([
                     html.Div([
                         html.Div("Cartão Nubank"),
                         html.Div(id = 'total-cartao-nubank')
                     ], className='total-c-nubank-nav')
-                ])
+                ], width=6)
             ])
         ], width=4),
-    ]),
+
+        dbc.Col([], width=1),
+
+        dbc.Row([
+            html.Br(),
+        ]),
+
+    ], id = 'navbar'),
 
     html.Br(),
+
+    # dashboard -------------------------------------------------------------------
 
     dbc.Row([
 

@@ -18,31 +18,101 @@ body {
     font-family: Ubuntu;
 }
 
-.container-grid-home {
-    display: grid;
-    height: 100vh;
-    grid-template-columns: 0.5fr 2fr;
-    grid-template-rows: 0.4fr 2fr;
-    grid-template-areas: 'nav nav' 'sidebar content';
+/* --------------------------------------------------------------------------
+sidebar
+-----------------------------------------------------------------------------*/
+
+#sidebar-completa {
+    background: #f3f3f3;
 }
 
-nav {
-    background: #000;
-    grid-area: nav;
-}
-
-.navbar-geral {
-    background-color: #fff;
-    font-family: Ubuntu;
-    font-size: 13px;
+.space-sidebar{
+    background-color: #4d4d4d;
     color: #4d4d4d;
-    z-index: 5000;
-    padding-left: 0px;
-    padding-bottom: 7px;
-    padding-top: 7px;
 }
 
-#sidebar {
-    background: #fff;
-    grid-area: sidebar;
+.sidebar-texto {
+    color: #4d4d4d;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+.sidebar-texto:hover {
+    color: #d4d4d4;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+#fatura-nubank:hover {
+    color: #d4d4d4;
+    background-color: #b4a7d6;
+}
+
+#fatura-inter:hover {
+    color: #d4d4d4;
+    background-color: #ffe599;
+}
+
+#detalhamento:hover {
+    color: #4d4d4d;
+    background-color: #d0e0e3;
+}
+
+/* --------------------------------------------------------------------------
+navbar
+-----------------------------------------------------------------------------*/
+
+#navbar {
+    background-color: #4d4d4d;
+}
+
+.titulo-navbar {
+    color: #fff;
+    padding-bottom: 5px;
+}
+
+#contas-bancarias{
+    margin-left: 50px;
+}
+
+.total-inter-nav {
+    color: #ff7900;
+    font-size: 13px;
+}
+
+.total-nubank-nav {
+    color: #b4a7d6;
+    font-size: 13px;
+}
+
+.total-bb-nav {
+    color: #ffe599;
+    font-size: 13px;
+}
+
+.total-cash-nav {
+    color: #b6d7a8;
+    font-size: 13px;
+}
+
+.total-c-inter-nav {
+    color: #ff7900;
+    font-size: 13px;
+}
+
+.total-c-nubank-nav {
+    color: #b4a7d6;
+    font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+dashboard
+-----------------------------------------------------------------------------*/
+
+#ano-home {
+    font-size: 13px;
+}
+
+#mes-home {
+    font-size: 13px;
 }

@@ -18,6 +18,13 @@ import dash_bootstrap_components as dbc
 layout = dbc.Col([
 
     html.Br(),
+    # html.Div(["."], className='space-sidebar'),
+    # html.Div(["."], className='space-sidebar'),
+    # html.Div(["."], className='space-sidebar'),
+    # html.Div(["."], className='space-sidebar'),
+    # html.Div(["."], className='space-sidebar'),
+    html.Br(),
+    html.Br(),
     html.Br(),
     html.Br(),
     html.Br(),
@@ -33,7 +40,7 @@ layout = dbc.Col([
                 width= 20
             ),
             html.Span(
-                " Fatura Nubank",
+                "Fatura Nubank",
                 className = 'sidebar-texto'
             )
         ],
@@ -52,7 +59,7 @@ layout = dbc.Col([
                 width= 20
             ),
             html.Span(
-                " Fatura Inter",
+                "Fatura Inter",
                 className = 'sidebar-texto'
             )
         ],
@@ -71,7 +78,7 @@ layout = dbc.Col([
                 width= 20
             ),
             html.Span(
-                " Detalhamento",
+                "Detalhamento",
                 className = 'sidebar-texto'
             )
         ],
