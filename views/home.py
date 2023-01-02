@@ -108,6 +108,8 @@ layout = dbc.Col([
 
     dbc.Row([
 
+        html.Br(),
+
         dbc.Col([
             ## selecionar ano -------------------------------------------------
             dcc.Dropdown(
@@ -129,7 +131,7 @@ layout = dbc.Col([
         ], width = 4),
 
         dbc.Col([], width = 6)
-    ]),
+    ], id='dropdown-home'),
 
     dbc.Row([
         # gráfico ------------------------------------------------

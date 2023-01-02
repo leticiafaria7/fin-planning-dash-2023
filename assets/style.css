@@ -103,6 +103,10 @@ navbar
 dashboard home
 -----------------------------------------------------------------------------*/
 
+#dropdown-home {
+    padding-left: 25px;
+}
+
 #ano-home {
     font-size: 13px;
 }
