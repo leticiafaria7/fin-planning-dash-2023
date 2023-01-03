@@ -83,13 +83,13 @@ layout = dbc.Col([
                 dbc.Col([
                     html.Div([
                         html.Div("Cartão Inter"),
-                        html.Div(id = 'total-cartao-inter')
+                        html.Div(children = callbacks_gerais.fat_inter(), id = 'total-cartao-inter')
                     ], className='total-c-inter-nav')
                 ], width=6),
                 dbc.Col([
                     html.Div([
                         html.Div("Cartão Nubank"),
-                        html.Div(id = 'total-cartao-nubank')
+                        html.Div(children = callbacks_gerais.fat_nubank(), id = 'total-cartao-nubank')
                     ], className='total-c-nubank-nav')
                 ], width=6)
             ])

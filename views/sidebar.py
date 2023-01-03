@@ -102,14 +102,6 @@ layout = dbc.Col([
     html.Br(),
     html.Br(),
     html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
+    html.Br()
 
 ], id='sidebar-completa')

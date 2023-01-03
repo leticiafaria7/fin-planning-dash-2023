@@ -23,9 +23,8 @@ fluxo_caixa = 'assets/fluxo-caixa.xlsx'
 
 despesas = pd.read_excel(fluxo_caixa, "despesas", engine = 'openpyxl')
 ent_transf = pd.read_excel(fluxo_caixa, "ent_transf", engine = 'openpyxl')
-tot_cat = pd.read_excel(fluxo_caixa, 'tot_cat', engine = 'openpyxl')
-tot_mes = pd.read_excel(fluxo_caixa, 'tot_mes', engine = 'openpyxl')
 categorias = pd.read_excel(fluxo_caixa, 'categorias', engine = 'openpyxl')
+pg_faturas = pd.read_excel(fluxo_caixa, 'pg_faturas', engine = 'openpyxl')
 
 #######################################################################
 # CONTAS BANCÁRIAS
@@ -87,9 +86,27 @@ def total_cash():
 # PRÓXIMAS FATURAS
 #######################################################################
 
-#######################################################################
-# DROPDOWNS HOME
-#######################################################################
+# fatura nubank -------------------------------------------------------
+
+def fat_nubank():
+
+    pg_faturas2 = pg_faturas[pg_faturas['cartão'] == 'cartão nubank']
+    pg_faturas2 = pg_faturas2[pg_faturas2['pago'] == False].reset_index()
+
+    prox_fat_nubank = "R$ " + str("{:.2f}".format(pg_faturas2.iloc[0]['total']))
+
+    return prox_fat_nubank
+
+# fatura inter -------------------------------------------------------
+
+def fat_inter():
+
+    pg_faturas2 = pg_faturas[pg_faturas['cartão'] == 'cartão inter']
+    pg_faturas2 = pg_faturas2[pg_faturas2['pago'] == False].reset_index()
+
+    prox_fat_inter = "R$ " + str("{:.2f}".format(pg_faturas2.iloc[0]['total']))
+
+    return prox_fat_inter
 
 #######################################################################
 # GRÁFICO HOME
