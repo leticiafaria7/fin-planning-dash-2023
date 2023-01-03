@@ -33,13 +33,55 @@ categorias = pd.read_excel(fluxo_caixa, 'categorias', engine = 'openpyxl')
 
 # inter ---------------------------------------------
 
+def total_inter():
+    ent_inter = ent_transf[ent_transf['banco de destino'] == 'inter']['valor'].sum()
+    transf_inter = ent_transf[ent_transf['banco de origem'] == 'inter']['valor'].sum()
+    saidas_inter = despesas[despesas['canal'] == 'inter']['valor'].sum()
 
+    tot_inter = ent_inter - transf_inter - saidas_inter
+
+    tot_inter2 = "R$ " + str("{:.2f}".format(tot_inter))
+
+    return tot_inter2
 
 # nubank ---------------------------------------------
 
+def total_nubank():
+    ent_nubank = ent_transf[ent_transf['banco de destino'] == 'nubank']['valor'].sum()
+    transf_nubank = ent_transf[ent_transf['banco de origem'] == 'nubank']['valor'].sum()
+    saidas_nubank = despesas[despesas['canal'] == 'nubank']['valor'].sum()
+
+    tot_nubank = ent_nubank - transf_nubank - saidas_nubank
+
+    tot_nubank2 = "R$ " + str("{:.2f}".format(tot_nubank))
+
+    return tot_nubank2
+
 # banco do brasil -------------------------------------
 
+def total_bb():
+    ent_bb = ent_transf[ent_transf['banco de destino'] == 'banco do brasil']['valor'].sum()
+    transf_bb = ent_transf[ent_transf['banco de origem'] == 'banco do brasil']['valor'].sum()
+    saidas_bb = despesas[despesas['canal'] == 'banco do brasil']['valor'].sum()
+
+    tot_bb = ent_bb - transf_bb - saidas_bb
+
+    tot_bb2 = "R$ " + str("{:.2f}".format(tot_bb))
+
+    return tot_bb2
+
 # cash ---------------------------------------------
+
+def total_cash():
+    ent_cash = ent_transf[ent_transf['banco de destino'] == 'cash']['valor'].sum()
+    transf_cash = ent_transf[ent_transf['banco de origem'] == 'cash']['valor'].sum()
+    saidas_cash = despesas[despesas['canal'] == 'cash']['valor'].sum()
+
+    tot_cash = ent_cash - transf_cash - saidas_cash
+
+    tot_cash2 = "R$ " + str("{:.2f}".format(tot_cash))
+
+    return tot_cash2
 
 #######################################################################
 # PRÓXIMAS FATURAS

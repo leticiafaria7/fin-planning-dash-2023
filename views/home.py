@@ -8,6 +8,7 @@ import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
+from callbacks import callbacks_gerais
 
 #######################################################################
 # LAYOUT
@@ -40,25 +41,25 @@ layout = dbc.Col([
                 dbc.Col([
                     html.Div([
                         html.Div("Inter"),
-                        html.Div(id = 'total-inter')
+                        html.Div(children = callbacks_gerais.total_inter(), id = 'total-inter')
                     ], className='total-inter-nav')
                 ], width=3),
                 dbc.Col([
                     html.Div([
                         html.Div("Nubank"),
-                        html.Div(id = 'total-nubank')
+                        html.Div(children = callbacks_gerais.total_nubank(), id = 'total-nubank')
                     ], className='total-nubank-nav')
                 ], width=3),
                 dbc.Col([
                     html.Div([
                         html.Div("Banco do Brasil"),
-                        html.Div(id = 'total-bb')
+                        html.Div(children = callbacks_gerais.total_bb(), id = 'total-bb')
                     ], className='total-bb-nav')
                 ], width=4),
                 dbc.Col([
                     html.Div([
                         html.Div("Cash"),
-                        html.Div(id = 'total-cash')
+                        html.Div(children = callbacks_gerais.total_cash(), id = 'total-cash')
                     ], className='total-cash-nav')
                 ], width=2),
             ])
