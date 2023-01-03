@@ -150,6 +150,7 @@ def grafico_cat(mes, ano):
             textposition = "outside",
             hovertemplate = 'R$ %{x:.2f}<extra></extra>',
             texttemplate = 'R$ %{x:.2f}',
+            hoverlabel = dict(font = dict(size = 10, color = '#4d4d4d')),
             textfont = dict(color = '#4d4d4d', size = 10)
         )
     ])
@@ -194,8 +195,106 @@ def grafico_cat(mes, ano):
 
 # gastos previstos ---------------------------
 
+@app.callback(
+    Output('card1', 'children'),
+
+    Input('mes-home', 'value'),
+    Input('ano-home', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def card1(mes, ano):
+
+    despesas2 = despesas
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    if mes == "Todos os meses" or mes is None:
+        gastos_prev2 = "R$ --"
+
+    else:
+        despesas2['mes'] = despesas2['mes'].str.capitalize()
+        despesas2 = despesas2[despesas2['ano'] == ano2]
+        gastos_prev = despesas2[despesas2['mes'] == mes]['valor'].sum()
+
+        gastos_prev2 = "R$ " + str("{:.2f}".format(gastos_prev))
+
+    return gastos_prev2
 
 # entradas previstas ---------------------------
 
+@app.callback(
+    Output('card2', 'children'),
+
+    Input('mes-home', 'value'),
+    Input('ano-home', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def card2(mes, ano):
+
+    ent_transf2 = ent_transf
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    if mes == "Todos os meses" or mes is None:
+        ent_prev2 = "R$ --"
+
+    else:
+        ent_transf2['mes'] = ent_transf2['mes'].str.capitalize()
+        ent_transf2 = ent_transf2[ent_transf2['ano'] == ano2]
+        ent_prev = ent_transf2[ent_transf2['mes'] == mes]['valor'].sum()
+
+        ent_prev2 = "R$ " + str("{:.2f}".format(ent_prev))
+
+    return ent_prev2
 
 # leftovers ----------------------------------------
+
+@app.callback(
+    Output('card3', 'children'),
+
+    Input('mes-home', 'value'),
+    Input('ano-home', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def card3(mes, ano):
+
+    despesas2 = despesas
+    ent_transf2 = ent_transf
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    if mes == "Todos os meses" or mes is None:
+        leftovers2 = "R$ --"
+
+    else:
+        despesas2['mes'] = despesas2['mes'].str.capitalize()
+        despesas2 = despesas2[despesas2['ano'] == ano2]
+        gastos_prev = despesas2[despesas2['mes'] == mes]['valor'].sum()
+
+        ent_transf2['mes'] = ent_transf2['mes'].str.capitalize()
+        ent_transf2 = ent_transf2[ent_transf2['ano'] == ano2]
+        ent_prev = ent_transf2[ent_transf2['mes'] == mes]['valor'].sum()
+
+        leftovers = ent_prev - gastos_prev
+
+        leftovers2 = "R$ " + str("{:.2f}".format(leftovers))
+
+    return leftovers2

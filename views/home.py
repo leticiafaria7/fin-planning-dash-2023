@@ -163,14 +163,25 @@ layout = dbc.Col([
 
         # cards ------------------------------------------------
         dbc.Col([
+
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+
             dbc.Row([
                 html.Div("Gastos previstos"),
                 html.Div(id = 'card1')
             ], className='cards-gastos'),
+
             dbc.Row([
                 html.Div("Entradas previstas"),
                 html.Div(id = 'card2')
             ], className='cards-entradas'),
+
             dbc.Row([
                 html.Div("Leftovers"),
                 html.Div(id = 'card3')
