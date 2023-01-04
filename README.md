@@ -42,7 +42,7 @@ o arquivo deve se chamar ```fluxo-caixa.xlsx``` e as abas devem ter os seguintes
 ```despesas``` <br>
 - base com todas as despesas, sejam recorrentes ou únicas, no cartão ou como boletos
 
-variável | descrição
+VARIÁVEL | DESCRIÇÃO
 :--- | :---
 data | data de pagamento, ou uma data no mês em que o gasto deverá ser pago
 categoria | categoria específica da despesa, mais abaixo há uma lista de exemplo
@@ -57,7 +57,7 @@ macro | colocar a fórmula ```=vlookup()``` para pegar a macro categoria da cate
 ```ent_transf``` <br>
 - base para colocar todas as entradas e transferências de um banco para outro
 
-variável | descrição
+VARIÁVEL | DESCRIÇÃO
 :--- | :---
 data | data de recebimento ou de transferência
 valor | valor recebido ou transferido
@@ -68,11 +68,22 @@ mes | descrever o mês numérico - ex: se mes_num for ```1```, nesta coluna deve
 ano | colocar a fórmula ```=year()``` para pegar o ano da data imputada
 
 ```pg_faturas``` <br>
+- lista todos os meses de cada ano para cada cartão (inter e nubank neste caso) e informa se está paga a fatura daquele mês <br>
+- a coluna ```pago``` tem um checkbox que, ao subir a base para tratar em python, fica como "True" ou "False"
+- ao informar que a fatura foi paga, todas as despesas daquela fatura ficarão como "pagas" na aba de ```despesas```
+
+VARIÁVEL | DESCRIÇÃO
+:--- | :---
+ano | ano de referência
+mes | mês de referência
+cartão | cartão (aqui no caso temos inter e nubank apenas)
+pago | se a fatura daquele cartão naquele ano e naquele mês foi paga
+total | valor total da fatura
 
 ```categorias``` <br>
 - lista de categorias específicas e suas respectivas categorias macro. exemplo:
 
-categoria especifica | categoria macro
+CATEGORIA ESPECÍFICA | CATEGORIA MACRO
 :--- | :---
 mercado/padaria | alimentação
 restaurantes | alimentação
