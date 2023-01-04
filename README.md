@@ -3,7 +3,36 @@
 *criação de um dashboard que resume os gastos e as entradas mensais em 2023*
 
 ## 🖼️ imagens 
-enquanto o dash não está disponível, seguem algumas imagens do desenho da estrutura
+enquanto o dash não está disponível para acesso, seguem algumas imagens do desenho da estrutura:
+
+```tela home``` - mostra o quanto tem em cada banco, o valor das próximas faturas, os maiores gastos de acordo com as categorias e, para cada mês, os gastos previstos, as entradas previstas e o quanto está sobrando (ou faltando)
+
+<p align = "left">
+  <img src = "https://github.com/leticiafaria7/fin-planning-dash-2023/blob/main/assets/home.png?raw=true" width = "700>
+</p>
+<br clear="all" />
+
+```tela fatura nubank``` - mostra um gráfico com o valor das faturas de cada mês, e selecionando o mês, é possível ver todos os gastos da fatura com as categorias específicas (valores fictícios)
+
+<p align = "left">
+  <img src = "https://github.com/leticiafaria7/fin-planning-dash-2023/blob/main/assets/fatura-nubank.png?raw=true" width = "700>
+</p>
+<br clear="all" />
+
+```tela fatura inter``` - igual à tela de fatura do nubank, mas com os gastos no cartão inter (valores fictícios)
+
+<p align = "left">
+  <img src = "https://github.com/leticiafaria7/fin-planning-dash-2023/blob/main/assets/fatura-inter.png?raw=true" width = "700>
+</p>
+<br clear="all" />
+
+```tela detalhamento``` - mostra os gastos específicos dentro de cada categoria macro mostradas na tela home
+
+<p align = "left">
+  <img src = "https://github.com/leticiafaria7/fin-planning-dash-2023/blob/main/assets/detalhamento.png?raw=true" width = "700>
+</p>
+<br clear="all" />
+
 
 ## 📊 bases de dados necessárias
 para o funcionamento do dash, seguem as estruturas das bases de dados, que devem estar na pasta ```📂 assets```
