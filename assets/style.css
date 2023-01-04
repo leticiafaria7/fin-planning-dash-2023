@@ -253,3 +253,23 @@ detalhamento
 #tabela-detalhamento {
     padding-top: 40px;
 }
+
+#grafico-detalhamento {
+    padding-top: 10px;
+}
+
+#clear {
+    font-size: 13px;
+    color: rgb(77, 77, 77);
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(237, 243, 251);
+    padding: 5px;
+    font-weight: 400;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+#clear:hover {
+    background-color: rgb(237,243,251);
+    color: rgb(0,0,0)
+}

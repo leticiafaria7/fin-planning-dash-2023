@@ -97,31 +97,44 @@ layout = dbc.Col([
 
         # tabela ------------------------
         dbc.Col([
-            dash_table.DataTable(
-                style_cell={
-                    'textAlign': 'center',
-                    'font-size': '13px',
-                    'font-family': 'Ubuntu',
-                    'whiteSpace': 'pre-line'
-                },
+            dbc.Row([
+                dash_table.DataTable(
+                    style_cell={
+                        'textAlign': 'center',
+                        'font-size': '12px',
+                        'font-family': 'Ubuntu',
+                        'whiteSpace': 'pre-line'
+                    },
 
-                style_data_conditional=[
-                    {
-                        'if': {'state': 'selected'},
-                        'backgroundColor': '#edf3fb',
-                        'border': '1px solid #edf3fb'
-                    }
-                ], style_as_list_view = True, id = 'tabela-detalhamento'
-            )
-        ], width=6),
+                    style_data_conditional=[
+                        {
+                            'if': {'state': 'selected'},
+                            'backgroundColor': '#edf3fb',
+                            'border': '1px solid #edf3fb'
+                        }
+                    ], 
+                    style_as_list_view = True, 
+                    style_header = {'fontWeight': 'bold'},
+                    id = 'tabela-detalhamento'
+                )
+            ]),
+            dbc.Row([
+                dbc.Col([
+                    html.Button("Limpar seleção", id = 'clear')
+                ], width=5),
+
+                dbc.Col([], width=7)
+            ])
+        ], width=5),
 
         # tabela ------------------------
         dbc.Col([
             dcc.Graph(
                 id='grafico-detalhamento',
+                figure={},
                 config={'displayModeBar': False}
             )
-        ], width=6)
+        ], width=7)
 
     ], id = 'dash-details')
 

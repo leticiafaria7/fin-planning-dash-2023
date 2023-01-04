@@ -14,6 +14,7 @@ from app import app
 from views import home, nubank, inter, details, sidebar
 from callbacks import callbacks_gerais
 
+pd.options.mode.chained_assignment = None
 
 #######################################################################
 # LAYOUT

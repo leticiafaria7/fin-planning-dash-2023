@@ -359,7 +359,10 @@ def tabela_details(mes, ano):
     prevent_inicial_call = True
 )
 
-def graf_detalhamento(celula, data, mes, ano):
+def graf_detalhamento(
+    celula, data, 
+    mes, ano
+):
 
     despesas2 = despesas
 
@@ -386,27 +389,29 @@ def graf_detalhamento(celula, data, mes, ano):
                 sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
         
         else:
-            macro = pd.DataFrame(data, columns = ['macro categorias', 'valor'])
-            macro['id'] = macro.index
+            df = pd.DataFrame(data, columns = ['macro categorias', 'valor'])
+            df['id'] = df.index
             row = row_aux.replace(',', '')
-            macro = macro[macro['id'] == int(row)]
-            selected = str(macro.iloc[0]['macro categorias'])
-            despesas2 = despesas2[despesas2['macro'] == selected]
+            df = df[df['id'] == int(row)]
+            selected = str(df.iloc[0]['macro categorias'])
+            despesas3 = despesas2[despesas2['macro'] == selected]
 
             if mes == "Todos os meses" or mes is None:
-                sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
+                sum_cat = despesas3.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
 
             else:
-                despesas2['mes'] = despesas2['mes'].str.capitalize()
-                despesas2 = despesas2[despesas2['ano'] == ano2]
-                despesas2 = despesas2[despesas2['mes'] == mes]
+                despesas3['mes'] = despesas3['mes'].str.capitalize()
+                despesas3 = despesas3[despesas3['ano'] == ano2]
+                despesas3 = despesas3[despesas3['mes'] == mes]
 
-                sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
+                sum_cat = despesas3.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
+
+        sum_cat2 = sum_cat
 
         fig = go.Figure([
             go.Bar(
-                y = sum_cat['categoria'],
-                x = sum_cat['valor'],
+                y = sum_cat2['categoria'],
+                x = sum_cat2['valor'],
                 orientation = 'h',
                 marker_color = '#d0e0e3',
                 textposition = "outside",
@@ -432,7 +437,7 @@ def graf_detalhamento(celula, data, mes, ano):
         fig.update_layout(
             yaxis = dict(title = '', showgrid = False),
             xaxis = dict(title = '', showgrid = False, showticklabels = False),
-            xaxis_range=[0, max(sum_cat['valor'])*1.15],
+            xaxis_range=[0, max(sum_cat2['valor'])*1.25],
             legend = dict(
                 orientation = 'h',
                 xanchor = 'center',
@@ -450,3 +455,19 @@ def graf_detalhamento(celula, data, mes, ano):
         )
 
         return fig
+
+#######################################################################
+# BOTÃO LIMPAR SELEÇÃO
+#######################################################################
+
+@app.callback(
+    Output("tabela-detalhamento", 'selected_cells'),
+    Output('tabela-detalhamento', 'active_cell'),
+
+    Input('clear', 'n_clicks'),
+
+    prevent_initial_call = True
+)
+
+def clear(n_clicks):
+    return [], None
