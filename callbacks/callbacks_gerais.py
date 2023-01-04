@@ -471,3 +471,194 @@ def graf_detalhamento(
 
 def clear(n_clicks):
     return [], None
+
+#######################################################################
+# GRÁFICO NUBANK
+#######################################################################
+
+@app.callback(
+    Output('grafico-nubank', 'figure'),
+
+    Input('ano-nubank', 'value'),
+    Input('mes-nubank', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def grafico_nubank(ano, mes):
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    despesas2 = despesas[despesas['canal'] == 'cartão nubank']
+    despesas2 = despesas2[despesas2['ano'] == ano2]
+    despesas2['mes'] = despesas2['mes'].str.capitalize()
+
+    sum_cat = despesas2.groupby(['mes'])['valor'].sum()
+    depara_mes = categorias[['mes_num', 'mes']]
+    sum_cat = sum_cat.merge(depara_mes, on = 'mes', how = 'left').sort_values(by = ['mes_num'], ascending=True).reset_index()
+
+    sum_cat['id'] = range(0, len(sum_cat))
+
+    if(mes):
+        n_row_graf = len(sum_cat)
+        colors = ['#d4d4d4'] * n_row_graf
+
+        id_value = sum_cat[sum_cat.mes == mes]
+
+        select = id_value.iloc[0]['id']
+        colors[select] = "#b4a7d6"
+        marker_color = colors
+
+    else:
+        marker_color = "#b4a7d6"
+
+    fig = go.Figure([
+        go.Bar(
+            y = sum_cat['mes'],
+            x = sum_cat['valor'],
+            orientation = 'h',
+            marker_color = marker_color,
+            textposition = "outside",
+            hovertemplate = 'R$ %{x:.2f}<extra></extra>',
+            texttemplate = 'R$ %{x:.2f}',
+            hoverlabel = dict(font = dict(size = 10, color = '#4d4d4d')),
+            textfont = dict(color = '#4d4d4d', size = 10)
+        )
+    ])
+
+    fig.update_yaxes(
+        ticks = 'outside', 
+        tickwidth = 2, 
+        tickcolor='#fff',
+        showline = True, 
+        linewidth = 2, 
+        linecolor = '#d4d4d4',
+        tickfont = dict(size = 10, color = '#4d4d4d')
+    )
+
+    fig.update_traces(width = 0.7)
+
+    fig.update_layout(
+        yaxis = dict(title = '', showgrid = False),
+        xaxis = dict(title = '', showgrid = False, showticklabels = False),
+        xaxis_range=[0, max(sum_cat['valor'])*1.15],
+        legend = dict(
+            orientation = 'h',
+            xanchor = 'center',
+            yanchor = 'top',
+            y = 1.2,
+            x = 0.5,
+            title_text = '',
+            font_family = 'Ubuntu'
+        ),
+        paper_bgcolor = '#fff',
+        plot_bgcolor = '#fff',
+        margin_t = 30,
+        margin_r = 30,
+        height = 600,
+    )
+
+    return fig
+
+#######################################################################
+# TABELA NUBANK
+#######################################################################
+
+
+#######################################################################
+# GRÁFICO INTER
+#######################################################################
+
+
+@app.callback(
+    Output('grafico-inter', 'figure'),
+
+    Input('ano-inter', 'value'),
+    Input('mes-inter', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def grafico_inter(ano, mes):
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    despesas2 = despesas[despesas['canal'] == 'cartão inter']
+    despesas2 = despesas2[despesas2['ano'] == ano2]
+    despesas2['mes'] = despesas2['mes'].str.capitalize()
+
+    sum_cat = despesas2.groupby(['mes'])['valor'].sum().reset_index()
+    sum_cat['id'] = range(0, len(sum_cat))
+
+    if(mes):
+        n_row_graf = len(sum_cat)
+        colors = ['#d4d4d4'] * n_row_graf
+
+        id_value = sum_cat[sum_cat.mes == mes]
+
+        select = id_value.iloc[0]['id']
+        colors[select] = "#ffe599"
+        marker_color = colors
+
+    else:
+        marker_color = "#ffe599"
+
+    fig = go.Figure([
+        go.Bar(
+            y = sum_cat['mes'],
+            x = sum_cat['valor'],
+            orientation = 'h',
+            marker_color = marker_color,
+            textposition = "outside",
+            hovertemplate = 'R$ %{x:.2f}<extra></extra>',
+            texttemplate = 'R$ %{x:.2f}',
+            hoverlabel = dict(font = dict(size = 10, color = '#4d4d4d')),
+            textfont = dict(color = '#4d4d4d', size = 10)
+        )
+    ])
+
+    fig.update_yaxes(
+        ticks = 'outside', 
+        tickwidth = 2, 
+        tickcolor='#fff',
+        showline = True, 
+        linewidth = 2, 
+        linecolor = '#d4d4d4',
+        tickfont = dict(size = 10, color = '#4d4d4d')
+    )
+
+    fig.update_traces(width = 0.7)
+
+    fig.update_layout(
+        yaxis = dict(title = '', showgrid = False),
+        xaxis = dict(title = '', showgrid = False, showticklabels = False),
+        xaxis_range=[0, max(sum_cat['valor'])*1.15],
+        legend = dict(
+            orientation = 'h',
+            xanchor = 'center',
+            yanchor = 'top',
+            y = 1.2,
+            x = 0.5,
+            title_text = '',
+            font_family = 'Ubuntu'
+        ),
+        paper_bgcolor = '#fff',
+        plot_bgcolor = '#fff',
+        margin_t = 30,
+        margin_r = 30,
+        height = 600,
+    )
+
+    return fig
+
+#######################################################################
+# TABELA INTER
+#######################################################################
