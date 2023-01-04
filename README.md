@@ -12,7 +12,7 @@ enquanto o dash não está disponível para acesso, seguem algumas imagens do de
 </p>
 <br clear="all" />
 
-```tela fatura nubank``` - mostra um gráfico com o valor das faturas de cada mês, e selecionando o mês, é possível ver todos os gastos da fatura com as categorias específicas (valores fictícios)
+```tela fatura nubank``` - mostra um gráfico com o valor das faturas de cada mês, e selecionando o mês, é possível ver o somatório dos gastos de cada categoria específica (valores fictícios)
 
 <p align = "left">
   <img src = "https://github.com/leticiafaria7/fin-planning-dash-2023/blob/main/assets/fatura-nubank.png?raw=true" width = "700>
