@@ -505,14 +505,19 @@ def grafico_nubank(ano, mes):
     sum_cat['id'] = range(0, len(sum_cat))
 
     if(mes):
-        n_row_graf = len(sum_cat)
-        colors = ['#d4d4d4'] * n_row_graf
 
-        id_value = sum_cat[sum_cat.mes == mes]
+        if mes == 'Todos os meses':
+            marker_color = "#b4a7d6"
 
-        select = id_value.iloc[0]['id']
-        colors[select] = "#b4a7d6"
-        marker_color = colors
+        else:
+            n_row_graf = len(sum_cat)
+            colors = ['#d4d4d4'] * n_row_graf
+
+            id_value = sum_cat[sum_cat.mes == mes]
+
+            select = id_value.iloc[0]['id']
+            colors[select] = "#b4a7d6"
+            marker_color = colors
 
     else:
         marker_color = "#b4a7d6"
@@ -641,15 +646,20 @@ def grafico_inter(ano, mes):
     sum_cat['id'] = range(0, len(sum_cat))
 
     if(mes):
-        n_row_graf = len(sum_cat)
-        colors = ['#d4d4d4'] * n_row_graf
 
-        id_value = sum_cat[sum_cat.mes == mes]
+        if mes == 'Todos os meses':
+            marker_color = "#ffe599"
 
-        select = id_value.iloc[0]['id']
-        colors[select] = "#ffe599"
-        marker_color = colors
+        else:
+            n_row_graf = len(sum_cat)
+            colors = ['#d4d4d4'] * n_row_graf
 
+            id_value = sum_cat[sum_cat.mes == mes]
+
+            select = id_value.iloc[0]['id']
+            colors[select] = "#ffe599"
+            marker_color = colors
+        
     else:
         marker_color = "#ffe599"
 

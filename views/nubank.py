@@ -94,7 +94,7 @@ layout = dbc.Col([
             dash_table.DataTable(
                 style_cell={
                     'textAlign': 'center',
-                    'font-size': '13px',
+                    'font-size': '12px',
                     'font-family': 'Ubuntu',
                     'whiteSpace': 'pre-line'
                 },
@@ -106,7 +106,7 @@ layout = dbc.Col([
                         'border': '1px solid #edf3fb'
                     }
                 ], 
-                style_as_list_view = True, 
+                # style_as_list_view = True, 
                 id = 'tabela-nubank',
                 style_header = {'fontWeight': 'bold'},
             )

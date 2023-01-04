@@ -113,7 +113,7 @@ layout = dbc.Col([
                             'border': '1px solid #edf3fb'
                         }
                     ], 
-                    style_as_list_view = True, 
+                    # style_as_list_view = True, 
                     style_header = {'fontWeight': 'bold'},
                     id = 'tabela-detalhamento'
                 )
