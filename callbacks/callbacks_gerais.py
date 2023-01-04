@@ -298,3 +298,155 @@ def card3(mes, ano):
         leftovers2 = "R$ " + str("{:.2f}".format(leftovers))
 
     return leftovers2
+
+#######################################################################
+# TABELA DETALHAMENTO
+#######################################################################
+
+@app.callback(
+
+    Output('tabela-detalhamento', 'data'),
+
+    Input('mes-detalhamento', 'value'),
+    Input('ano-detalhamento', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def tabela_details(mes, ano):
+
+    despesas2 = despesas
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    if mes == "Todos os meses" or mes is None:
+        tabela_detalhamento = despesas2.groupby(['macro'])['valor'].sum().sort_values(ascending = False).reset_index()
+
+    else:
+        despesas2['mes'] = despesas2['mes'].str.capitalize()
+        despesas2 = despesas2[despesas2['ano'] == ano2]
+        despesas2 = despesas2[despesas2['mes'] == mes]
+
+        tabela_detalhamento = despesas2.groupby(['macro'])['valor'].sum().sort_values(ascending = False).reset_index()
+
+    tabela_detalhamento['valor'] = tabela_detalhamento['valor'].map('{:,.2f}'.format)
+    
+    tabela_detalhamento2 = tabela_detalhamento.rename(columns = {
+        "macro": 'macro categorias',
+    })
+
+    tabela_detalhamento3 = tabela_detalhamento2.to_dict(orient = 'records')
+
+    return tabela_detalhamento3
+
+#######################################################################
+# GRÁFICO DETALHAMENTO
+#######################################################################
+
+@app.callback(
+
+    Output('grafico-detalhamento', 'figure'),
+
+    Input('tabela-detalhamento', 'active_cell'),
+    Input('tabela-detalhamento', 'data'),
+    Input('mes-detalhamento', 'value'),
+    Input('ano-detalhamento', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def graf_detalhamento(celula, data, mes, ano):
+
+    despesas2 = despesas
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    if celula:
+        row_aux = str(celula).split(' ')[1]
+        coluna_aux = str(celula).split(' ')[3]
+
+        if coluna_aux != '0,':
+            
+            if mes == "Todos os meses" or mes is None:
+                sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
+
+            else:
+                despesas2['mes'] = despesas2['mes'].str.capitalize()
+                despesas2 = despesas2[despesas2['ano'] == ano2]
+                despesas2 = despesas2[despesas2['mes'] == mes]
+
+                sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
+        
+        else:
+            macro = pd.DataFrame(data, columns = ['macro categorias', 'valor'])
+            macro['id'] = macro.index
+            row = row_aux.replace(',', '')
+            macro = macro[macro['id'] == int(row)]
+            selected = str(macro.iloc[0]['macro categorias'])
+            despesas2 = despesas2[despesas2['macro'] == selected]
+
+            if mes == "Todos os meses" or mes is None:
+                sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
+
+            else:
+                despesas2['mes'] = despesas2['mes'].str.capitalize()
+                despesas2 = despesas2[despesas2['ano'] == ano2]
+                despesas2 = despesas2[despesas2['mes'] == mes]
+
+                sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
+
+        fig = go.Figure([
+            go.Bar(
+                y = sum_cat['categoria'],
+                x = sum_cat['valor'],
+                orientation = 'h',
+                marker_color = '#d0e0e3',
+                textposition = "outside",
+                hovertemplate = 'R$ %{x:.2f}<extra></extra>',
+                texttemplate = 'R$ %{x:.2f}',
+                hoverlabel = dict(font = dict(size = 10, color = '#4d4d4d')),
+                textfont = dict(color = '#4d4d4d', size = 10)
+            )
+        ])
+
+        fig.update_yaxes(
+            ticks = 'outside', 
+            tickwidth = 2, 
+            tickcolor='#fff',
+            showline = True, 
+            linewidth = 2, 
+            linecolor = '#d4d4d4',
+            tickfont = dict(size = 10, color = '#4d4d4d')
+        )
+
+        fig.update_traces(width = 0.7)
+
+        fig.update_layout(
+            yaxis = dict(title = '', showgrid = False),
+            xaxis = dict(title = '', showgrid = False, showticklabels = False),
+            xaxis_range=[0, max(sum_cat['valor'])*1.15],
+            legend = dict(
+                orientation = 'h',
+                xanchor = 'center',
+                yanchor = 'top',
+                y = 1.2,
+                x = 0.5,
+                title_text = '',
+                font_family = 'Ubuntu'
+            ),
+            paper_bgcolor = '#fff',
+            plot_bgcolor = '#fff',
+            margin_t = 30,
+            margin_r = 30,
+            height = 450,
+        )
+
+        return fig

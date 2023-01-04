@@ -170,7 +170,6 @@ layout = dbc.Col([
             html.Br(),
             html.Br(),
             html.Br(),
-            html.Br(),
 
             dbc.Row([
                 html.Div("Gastos previstos"),
