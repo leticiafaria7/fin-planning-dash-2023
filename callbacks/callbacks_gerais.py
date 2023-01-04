@@ -495,11 +495,12 @@ def grafico_nubank(ano, mes):
 
     despesas2 = despesas[despesas['canal'] == 'cartão nubank']
     despesas2 = despesas2[despesas2['ano'] == ano2]
-    despesas2['mes'] = despesas2['mes'].str.capitalize()
 
-    sum_cat = despesas2.groupby(['mes'])['valor'].sum()
+    sum_cat = despesas2.groupby(['mes'])['valor'].sum().reset_index()
     depara_mes = categorias[['mes_num', 'mes']]
-    sum_cat = sum_cat.merge(depara_mes, on = 'mes', how = 'left').sort_values(by = ['mes_num'], ascending=True).reset_index()
+    sum_cat = sum_cat.merge(depara_mes, on = 'mes', how = 'left').sort_values(by = ['mes_num'], ascending=False)
+
+    sum_cat['mes'] = sum_cat['mes'].str.capitalize()
 
     sum_cat['id'] = range(0, len(sum_cat))
 
@@ -568,11 +569,49 @@ def grafico_nubank(ano, mes):
 # TABELA NUBANK
 #######################################################################
 
+@app.callback(
+
+    Output('tabela-nubank', 'data'),
+
+    Input('mes-nubank', 'value'),
+    Input('ano-nubank', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def tabela_details(mes, ano):
+
+    despesas2 = despesas[despesas['canal'] == 'cartão nubank']
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    if mes == "Todos os meses" or mes is None:
+        tabela_nubank = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = False).reset_index()
+
+    else:
+        despesas2['mes'] = despesas2['mes'].str.capitalize()
+        despesas2 = despesas2[despesas2['ano'] == ano2]
+        despesas2 = despesas2[despesas2['mes'] == mes]
+
+        tabela_nubank = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = False).reset_index()
+
+    tabela_nubank['valor'] = tabela_nubank['valor'].map('{:,.2f}'.format)
+    
+    tabela_nubank2 = tabela_nubank.rename(columns = {
+        "categoria": 'despesas',
+    })
+
+    tabela_nubank3 = tabela_nubank2.to_dict(orient = 'records')
+
+    return tabela_nubank3
 
 #######################################################################
 # GRÁFICO INTER
 #######################################################################
-
 
 @app.callback(
     Output('grafico-inter', 'figure'),
@@ -593,9 +632,12 @@ def grafico_inter(ano, mes):
 
     despesas2 = despesas[despesas['canal'] == 'cartão inter']
     despesas2 = despesas2[despesas2['ano'] == ano2]
-    despesas2['mes'] = despesas2['mes'].str.capitalize()
 
     sum_cat = despesas2.groupby(['mes'])['valor'].sum().reset_index()
+    depara_mes = categorias[['mes_num', 'mes']]
+    sum_cat = sum_cat.merge(depara_mes, on = 'mes', how = 'left').sort_values(by = ['mes_num'], ascending=False)
+
+    sum_cat['mes'] = sum_cat['mes'].str.capitalize()
     sum_cat['id'] = range(0, len(sum_cat))
 
     if(mes):
@@ -662,3 +704,43 @@ def grafico_inter(ano, mes):
 #######################################################################
 # TABELA INTER
 #######################################################################
+
+@app.callback(
+
+    Output('tabela-inter', 'data'),
+
+    Input('mes-inter', 'value'),
+    Input('ano-inter', 'value'),
+
+    prevent_inicial_call = True
+)
+
+def tabela_details(mes, ano):
+
+    despesas2 = despesas[despesas['canal'] == 'cartão inter']
+
+    if ano is None:
+        ano2 = 2023
+
+    else:
+        ano2 = ano
+
+    if mes == "Todos os meses" or mes is None:
+        tabela_inter = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = False).reset_index()
+
+    else:
+        despesas2['mes'] = despesas2['mes'].str.capitalize()
+        despesas2 = despesas2[despesas2['ano'] == ano2]
+        despesas2 = despesas2[despesas2['mes'] == mes]
+
+        tabela_inter = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = False).reset_index()
+
+    tabela_inter['valor'] = tabela_inter['valor'].map('{:,.2f}'.format)
+    
+    tabela_inter2 = tabela_inter.rename(columns = {
+        "categoria": 'despesas',
+    })
+
+    tabela_inter3 = tabela_inter2.to_dict(orient = 'records')
+
+    return tabela_inter3

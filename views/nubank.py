@@ -105,7 +105,10 @@ layout = dbc.Col([
                         'backgroundColor': '#edf3fb',
                         'border': '1px solid #edf3fb'
                     }
-                ], style_as_list_view = True, id = 'tabela-nubank'
+                ], 
+                style_as_list_view = True, 
+                id = 'tabela-nubank',
+                style_header = {'fontWeight': 'bold'},
             )
         ], width=4)
     ])
