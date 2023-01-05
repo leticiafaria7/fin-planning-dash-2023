@@ -37,14 +37,18 @@ sidebar
     font-size: 13px;
 }
 
+.nav-link.active {
+    background-color: #d0e0e3;
+}
+
 #fatura-nubank:hover {
     color: #d4d4d4;
-    background-color: #b4a7d6;
+    background-color: #d0e0e3;
 }
 
 #fatura-inter:hover {
     color: #d4d4d4;
-    background-color: #ffe599;
+    background-color: #d0e0e3;
 }
 
 #detalhamento:hover {

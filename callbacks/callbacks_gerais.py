@@ -376,7 +376,7 @@ def graf_detalhamento(
         row_aux = str(celula).split(' ')[1]
         coluna_aux = str(celula).split(' ')[3]
 
-        if coluna_aux != '0,':
+        if coluna_aux != "0,":
             
             if mes == "Todos os meses" or mes is None:
                 sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
@@ -406,55 +406,67 @@ def graf_detalhamento(
 
                 sum_cat = despesas3.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
 
-        sum_cat2 = sum_cat
+    else:
 
-        fig = go.Figure([
-            go.Bar(
-                y = sum_cat2['categoria'],
-                x = sum_cat2['valor'],
-                orientation = 'h',
-                marker_color = '#d0e0e3',
-                textposition = "outside",
-                hovertemplate = 'R$ %{x:.2f}<extra></extra>',
-                texttemplate = 'R$ %{x:.2f}',
-                hoverlabel = dict(font = dict(size = 10, color = '#4d4d4d')),
-                textfont = dict(color = '#4d4d4d', size = 10)
-            )
-        ])
+        if mes == "Todos os meses" or mes is None:
+            sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
 
-        fig.update_yaxes(
-            ticks = 'outside', 
-            tickwidth = 2, 
-            tickcolor='#fff',
-            showline = True, 
-            linewidth = 2, 
-            linecolor = '#d4d4d4',
-            tickfont = dict(size = 10, color = '#4d4d4d')
+        else:
+            despesas2['mes'] = despesas2['mes'].str.capitalize()
+            despesas2 = despesas2[despesas2['ano'] == ano2]
+            despesas2 = despesas2[despesas2['mes'] == mes]
+
+            sum_cat = despesas2.groupby(['categoria'])['valor'].sum().sort_values(ascending = True).reset_index()
+
+    sum_cat2 = sum_cat
+
+    fig = go.Figure([
+        go.Bar(
+            y = sum_cat2['categoria'],
+            x = sum_cat2['valor'],
+            orientation = 'h',
+            marker_color = '#d0e0e3',
+            textposition = "outside",
+            hovertemplate = 'R$ %{x:.2f}<extra></extra>',
+            texttemplate = 'R$ %{x:.2f}',
+            hoverlabel = dict(font = dict(size = 10, color = '#4d4d4d')),
+            textfont = dict(color = '#4d4d4d', size = 10)
         )
+    ])
 
-        fig.update_traces(width = 0.7)
+    fig.update_yaxes(
+        ticks = 'outside', 
+        tickwidth = 2, 
+        tickcolor='#fff',
+        showline = True, 
+        linewidth = 2, 
+        linecolor = '#d4d4d4',
+        tickfont = dict(size = 10, color = '#4d4d4d')
+    )
 
-        fig.update_layout(
-            yaxis = dict(title = '', showgrid = False),
-            xaxis = dict(title = '', showgrid = False, showticklabels = False),
-            xaxis_range=[0, max(sum_cat2['valor'])*1.25],
-            legend = dict(
-                orientation = 'h',
-                xanchor = 'center',
-                yanchor = 'top',
-                y = 1.2,
-                x = 0.5,
-                title_text = '',
-                font_family = 'Ubuntu'
-            ),
-            paper_bgcolor = '#fff',
-            plot_bgcolor = '#fff',
-            margin_t = 30,
-            margin_r = 30,
-            height = 450,
-        )
+    fig.update_traces(width = 0.7)
 
-        return fig
+    fig.update_layout(
+        yaxis = dict(title = '', showgrid = False),
+        xaxis = dict(title = '', showgrid = False, showticklabels = False),
+        xaxis_range=[0, max(sum_cat2['valor'])*1.25],
+        legend = dict(
+            orientation = 'h',
+            xanchor = 'center',
+            yanchor = 'top',
+            y = 1.2,
+            x = 0.5,
+            title_text = '',
+            font_family = 'Ubuntu'
+        ),
+        paper_bgcolor = '#fff',
+        plot_bgcolor = '#fff',
+        margin_t = 30,
+        margin_r = 30,
+        height = 450,
+    )
+
+    return fig
 
 #######################################################################
 # BOTÃO LIMPAR SELEÇÃO
