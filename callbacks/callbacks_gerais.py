@@ -254,10 +254,14 @@ def card2(mes, ano):
         ent_transf2['mes'] = ent_transf2['mes'].str.capitalize()
         ent_transf2 = ent_transf2[ent_transf2['ano'] == ano2]
         ent_prev = ent_transf2[ent_transf2['mes'] == mes]['valor'].sum()
+        tot_transf = ent_transf2.loc[ent_transf2['banco de origem'].notnull()]
+        tot_transf = tot_transf[tot_transf['mes'] == mes]['valor'].sum()
 
-        ent_prev2 = "R$ " + str("{:.2f}".format(ent_prev))
+        tot_entrada = ent_prev - tot_transf
 
-    return ent_prev2
+        tot_entrada2 = "R$ " + str("{:.2f}".format(tot_entrada))
+
+    return tot_entrada2
 
 # leftovers ----------------------------------------
 
@@ -292,8 +296,12 @@ def card3(mes, ano):
         ent_transf2['mes'] = ent_transf2['mes'].str.capitalize()
         ent_transf2 = ent_transf2[ent_transf2['ano'] == ano2]
         ent_prev = ent_transf2[ent_transf2['mes'] == mes]['valor'].sum()
+        tot_transf = ent_transf2.loc[ent_transf2['banco de origem'].notnull()]
+        tot_transf = tot_transf[tot_transf['mes'] == mes]['valor'].sum()
 
-        leftovers = ent_prev - gastos_prev
+        tot_entrada = ent_prev - tot_transf
+
+        leftovers = tot_entrada - gastos_prev
 
         leftovers2 = "R$ " + str("{:.2f}".format(leftovers))
 
