@@ -248,7 +248,7 @@ def card2(mes, ano):
         ano2 = ano
 
     if mes == "Todos os meses" or mes is None:
-        ent_prev2 = "R$ --"
+        tot_entrada2 = "R$ --"
 
     else:
         ent_transf2['mes'] = ent_transf2['mes'].str.capitalize()
