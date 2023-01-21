@@ -69,6 +69,11 @@ def render_page(pathname):
 # PORT / HOST
 #######################################################################
 
+# rodar local
+# if __name__ == '__main__':
+#     app.run_server(debug=True)
+
+# criar imagem
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(port=8080, debug=False, host="0.0.0.0")
 
