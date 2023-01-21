@@ -3,7 +3,8 @@
 # BIBLIOTECAS
 #######################################################################
 
-from app import app
+# from index import app
+
 from dash.dependencies import Input, Output
 from dash import html, dcc
 import pandas as pd

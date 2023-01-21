@@ -3,7 +3,7 @@
 # BIBLIOTECAS
 #######################################################################
 
-from app import app
+from index import app
 
 from dash.exceptions import PreventUpdate
 from dash.dependencies import Input, Output
