@@ -53,7 +53,7 @@ app.layout = dbc.Container(
 def render_page(pathname):
 
     if pathname == '/' or pathname == '/home':
-        return home.layout
+        return home.lagityout
 
     if pathname == '/fatura-nubank':
         return nubank.layout
@@ -70,10 +70,10 @@ def render_page(pathname):
 #######################################################################
 
 # rodar local
-# if __name__ == '__main__':
-#     app.run_server(debug=True)
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
 # criar imagem
-if __name__ == '__main__':
-    app.run_server(port=8080, debug=False, host="0.0.0.0")
+# if __name__ == '__main__':
+#     app.run_server(port=8080, debug=False, host="0.0.0.0")
 
