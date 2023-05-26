@@ -53,7 +53,7 @@ app.layout = dbc.Container(
 def render_page(pathname):
 
     if pathname == '/' or pathname == '/home':
-        return home.lagityout
+        return home.layout
 
     if pathname == '/fatura-nubank':
         return nubank.layout
